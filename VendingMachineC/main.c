@@ -32,13 +32,18 @@ int main() {
                 for (int i = 0; i < numItems; i++) {
                     printf("%d: %s - $%.2f\n", i, items_arr + i, item_price[i]);
                 }
-                scanf("%d", &item);
+                scanf("%d", &item); /* get item selected by user */
 
-                double price = item_price[item];
+                double price = item_price[item]; /* get price of item */
 
-                double enteredCurrency = getCoins(price);
+                double enteredCurrency = getCoins(price); /* get coins from user */
 
-                printf("ammount entered by user %.2f\n", enteredCurrency);
+                printf("\nVending %s\n\n", items_arr + item); /* vend item */
+
+                /* calculate and return change*/
+                double change = enteredCurrency - price;
+                printf("Dispencing change\n");
+                printf("Change = $%.2f\n", change);
 
                 break;
 
