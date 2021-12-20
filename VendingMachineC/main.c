@@ -11,6 +11,9 @@ int main() {
     int numItems = 3; /* counter to keep track of number of items in dending machine for assigning key to additonal items*/
     int vendingAction; /* used to ask user the vending action the would like to perform - purchase, add, exit. */
     int itemNum; /* used to ask user which item the would like form vending machine */
+    double newItemPrice;
+    char newItemName[25];
+
 
     struct Node* vendItems = NULL; /* list containing all items in vending machine*/
 
@@ -60,10 +63,21 @@ int main() {
                 break;
 
             case 2:
-                printf("Add\n");
+                printf("Enter item name: ");
+                scanf("%s", newItemName);
+
+                printf("Enter item price: ");
+                scanf("%lf", &newItemPrice);
+
+                numItems += 1; /* increment num items counter */
+
+                append(&vendItems, numItems, newItemName, newItemPrice); /* add item to list */
+
+                printf("Item added: %s - $%.2f\n\n", newItemName, newItemPrice);
                 break;
             
             case 3:
+                freeList(vendItems); /* free memory used to store list on exit*/
                 exit(0);
                 break;
             
