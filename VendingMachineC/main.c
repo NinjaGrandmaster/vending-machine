@@ -96,7 +96,8 @@ double getCoins(double price){
     int coin;
     while (coinSum < price)
     {
-        printf("Amount needed %.2f\n", price);
+        printf("Amount needed: $%.2f\n", price);
+        printf("Current Balance: $%.2f\n", coinSum);
         printf("Enter coin\n1: Penny\n2: Nickle\n3: Dime\n4: Quarter\n");
         scanf("%d", &coin);
         switch (coin) {
@@ -116,8 +117,6 @@ double getCoins(double price){
             printf("Invalid Choice\n");
             break;
         }
-
-        printf("Current amount: %.2f\n", coinSum);
     }
     
     return coinSum;
