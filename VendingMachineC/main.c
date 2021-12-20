@@ -2,24 +2,22 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+#include "list.h"
+
 double getCoins(double price);
 
 int main() {
-    int numItems = 3;
-    /* Initial items in vending machine and their prices stored in seperate arrays*/
-    char items_arr[3][20] = {
-        "Almonds",
-        "Chocolate",
-        "Bagel"
-    };
-    double item_price[3] = {
-        1.00,
-        1.25,
-        2.50
-    };
 
-    int vendingAction;
-    int item;
+    int numItems = 3; /* counter to keep track of number of items in dending machine for assigning key to additonal items*/
+    int vendingAction; /* used to ask user the vending action the would like to perform - purchase, add, exit. */
+    int itemNum; /* used to ask user which item the would like form vending machine */
+
+    struct Node* vendItems = NULL; /* list containing all items in vending machine*/
+
+    /* add initial items to vending machine */
+    append(&vendItems, 1, "Almonds", 1.00);
+    append(&vendItems, 2, "Chocolate", 1.25);
+    append(&vendItems, 3, "Bagel", 2.50);
 
     while (1) {
         /* ask user if they are purchasing or adding item to machine*/
@@ -29,23 +27,35 @@ int main() {
         switch (vendingAction)
         {
             case 1:
+                /* display items in vending machine*/
+                printList(vendItems);
+                /* get item selected by user */
                 printf("Select an Item\n");
-                /* display items in vending machine with price*/
-                for (int i = 0; i < numItems; i++) {
-                    printf("%d: %s - $%.2f\n", i, items_arr + i, item_price[i]);
+                scanf("%d", &itemNum);
+
+                bool itemExists = exists(vendItems, itemNum); /* check if items exist */
+
+                if (itemExists)
+                {
+                    /* get name and price of item from list */
+                    char* itemName = getName(vendItems, itemNum);
+                    double itemPrice = getPrice(vendItems, itemNum);
+
+                    printf("Selected: %s - $%.2f\n", itemName, itemPrice);
+
+                    double enteredCurrency = getCoins(itemPrice); /* get coins from user */
+
+                    printf("\nVending %s\n\n", itemName); /* vend item */
+
+                    /* calculate and return change*/
+                    double change = enteredCurrency - itemPrice;
+                    printf("Dispencing change\n");
+                    printf("Change = $%.2f\n\n", change);
+
+                } else {
+                    /* item does not exist */
+                    printf("Invalid Choice\n");
                 }
-                scanf("%d", &item); /* get item selected by user */
-
-                double price = item_price[item]; /* get price of item */
-
-                double enteredCurrency = getCoins(price); /* get coins from user */
-
-                printf("\nVending %s\n\n", items_arr + item); /* vend item */
-
-                /* calculate and return change*/
-                double change = enteredCurrency - price;
-                printf("Dispencing change\n");
-                printf("Change = $%.2f\n", change);
 
                 break;
 
