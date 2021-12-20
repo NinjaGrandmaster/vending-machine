@@ -8,7 +8,7 @@ double getCoins(double price);
 
 int main() {
 
-    int numItems = 3; /* counter to keep track of number of items in dending machine for assigning key to additonal items*/
+    int numItems = 3; /* counter to keep track of number of items in vending machine and for assigning keys to additonal items*/
     int vendingAction; /* used to ask user the vending action the would like to perform - purchase, add, exit. */
     int itemNum; /* used to ask user which item the would like form vending machine */
     double newItemPrice;
