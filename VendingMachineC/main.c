@@ -1,4 +1,6 @@
+#include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 double getCoins(double price);
 
@@ -21,7 +23,7 @@ int main() {
 
     while (1) {
         /* ask user if they are purchasing or adding item to machine*/
-        printf("Select an action \n1: Puchase Item\n2: Add Item\n");
+        printf("Select an action \n1: Puchase Item\n2: Add Item\n3: Exit\n");
         scanf("%d", &vendingAction);
 
         switch (vendingAction)
@@ -49,6 +51,10 @@ int main() {
 
             case 2:
                 printf("Add\n");
+                break;
+            
+            case 3:
+                exit(0);
                 break;
             
             default:
