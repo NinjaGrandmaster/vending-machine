@@ -1,6 +1,6 @@
 # vending-machine
 
-How to compile eand run vending machine c program
+How to compile and run vending machine c program
 
 1. Using terminal enter the VendingMachineC directory.
     * Note: must have [gcc](https://gcc.gnu.org/) installed on machine.
