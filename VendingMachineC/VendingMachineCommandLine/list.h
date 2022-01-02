@@ -17,7 +17,7 @@ void printList(struct Node* head);
 /* add item to list */
 void append(struct Node** head, int key, char* item, double price);
 /* free memeory after using list */
-void freeList();
+void freeList(struct Node* head);
 /* check if an item exists in a list */
 bool exists(struct Node* head, int key);
 /* get the price of an item from the list  */
