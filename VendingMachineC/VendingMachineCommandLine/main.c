@@ -17,8 +17,6 @@ int main(int argc, char *argv[]) {
     append(&vendItems, 3, "Bagel", 2.50);
 
     if( argc == 2 ) {
-        printf("The argument supplied is %s\n", argv[1]);
-
         if (!strcmp("-l", argv[1])){
             printList(vendItems);
         } else {
