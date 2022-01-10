@@ -13,6 +13,7 @@ Postion this project was created for closed. Development of this project is inde
 
 ## Component status
 
+* Vending Machine State Machine Diagram - Complete
 * Vending Machine Interactive version - Complete
 * Vending Machine Command line version - Incomplete
 * Vending Machine QT widgets version - Incomplete
